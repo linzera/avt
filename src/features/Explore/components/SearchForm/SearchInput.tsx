@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
   label: {
     marginBottom: 4,
   },
+  placeholder: {
+    opacity: 0.3,
+  },
 });
 
 interface Props {
@@ -26,11 +29,15 @@ export default function SearchInput({
 }: Props) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Typography style={styles.label}>{label}</Typography>
+      <Typography fontType="medium" color="accent" style={styles.label}>
+        {label}
+      </Typography>
       {value ? (
-        <Typography>{value}</Typography>
+        <Typography color="neutral">{value}</Typography>
       ) : (
-        <Typography color="gray400">{placeholder}</Typography>
+        <Typography style={styles.placeholder} color="primary">
+          {placeholder}
+        </Typography>
       )}
     </TouchableOpacity>
   );

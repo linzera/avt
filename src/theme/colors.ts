@@ -75,6 +75,7 @@ const oranges = {
 const avant = {
   neutral: '#505051',
   primary: '#022B54',
+  accent: '#53C3D0',
 };
 
 const colors = {

@@ -30,19 +30,19 @@ export default function SearchForm() {
       <View style={styles.container}>
         <SearchInput
           label="Destination"
-          placeholder="Select a destination..."
+          placeholder="Select destination"
           onPress={() => onSearchInputPress(routes.destination)}
         />
         <Divider />
         <SearchInput
           label="Check In - Check Out"
-          placeholder="Select dates..."
+          placeholder="Select dates"
           onPress={() => onSearchInputPress(routes.period)}
         />
         <Divider />
         <SearchInput
           label="Who"
-          placeholder="Any guests"
+          placeholder="Add guests"
           onPress={() => onSearchInputPress(routes.guests)}
         />
       </View>
