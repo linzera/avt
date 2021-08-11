@@ -4,11 +4,13 @@ import {useNavigation} from '@react-navigation/native';
 import SearchInput from './SearchInput';
 import routes from '@explore/navigation/routes';
 import Button from '~/components/Button';
+import colors from '~/theme/colors';
+import Divider from '~/components/Divider';
 
 const styles = StyleSheet.create({
   container: {
     borderWidth: 2,
-    borderColor: 'gray',
+    borderColor: colors.gray200,
     marginBottom: 16,
     borderRadius: 2,
     paddingHorizontal: 8,
@@ -20,7 +22,7 @@ export default function SearchForm() {
   const {navigate} = useNavigation();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore dale
+  // @ts-ignore
   const onSearchInputPress = (route: string) => navigate(route);
 
   return (
@@ -31,11 +33,13 @@ export default function SearchForm() {
           placeholder="Select a destination..."
           onPress={() => onSearchInputPress(routes.destination)}
         />
+        <Divider />
         <SearchInput
           label="Check In - Check Out"
           placeholder="Select dates..."
           onPress={() => onSearchInputPress(routes.period)}
         />
+        <Divider />
         <SearchInput
           label="Who"
           placeholder="Any guests"
@@ -43,7 +47,7 @@ export default function SearchForm() {
         />
       </View>
       <Button variant="primary">
-        <Button.Text style={{color: 'white'}}>Show homes</Button.Text>
+        <Button.Text>Show homes</Button.Text>
       </Button>
     </>
   );
