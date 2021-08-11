@@ -11,7 +11,8 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@explore/*": ["src/features/Explore/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

@@ -4,8 +4,16 @@ module.exports = {
     [
       'babel-plugin-root-import',
       {
-        rootPathSuffix: './src',
-        rootPathPrefix: '~/',
+        paths: [
+          {
+            rootPathSuffix: './src',
+            rootPathPrefix: '~/',
+          },
+          {
+            rootPathSuffix: './src/features/Explore',
+            rootPathPrefix: '@explore/',
+          },
+        ],
       },
     ],
   ],
