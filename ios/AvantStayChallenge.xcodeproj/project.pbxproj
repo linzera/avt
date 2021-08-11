@@ -14,6 +14,9 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		ADF303D87323D38DE7DF7FAE /* libPods-AvantStayChallenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66AC9E431BB0DAB6912B3A /* libPods-AvantStayChallenge.a */; };
 		D45430BCC5551E4A5DFE6B63 /* libPods-AvantStayChallenge-AvantStayChallengeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A01E9EACE5CC56424F6053B /* libPods-AvantStayChallenge-AvantStayChallengeTests.a */; };
+		F4CA8DFC67984C32B2B15D95 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4426AFEC4F7B4995A59721E8 /* SourceSansPro-Bold.ttf */; };
+		EAEE6A665A264FE38D93192D /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89BF640E237C4B3492DF980D /* SourceSansPro-Regular.ttf */; };
+		1F3A04287A5D46ADBF1C474D /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		B675665486B117CB1B892E4F /* Pods-AvantStayChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AvantStayChallenge.release.xcconfig"; path = "Target Support Files/Pods-AvantStayChallenge/Pods-AvantStayChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		BF461EB575147525303571A7 /* Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-AvantStayChallenge-AvantStayChallengeTests/Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		4426AFEC4F7B4995A59721E8 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Bold.ttf"; path = "../src/assets/fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		89BF640E237C4B3492DF980D /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Regular.ttf"; path = "../src/assets/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-SemiBold.ttf"; path = "../src/assets/fonts/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				7D643157A3621A65CB81D347 /* Pods */,
+				DBC8929BD57A41D3938F4EFE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -148,6 +155,17 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		DBC8929BD57A41D3938F4EFE /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				4426AFEC4F7B4995A59721E8 /* SourceSansPro-Bold.ttf */,
+				89BF640E237C4B3492DF980D /* SourceSansPro-Regular.ttf */,
+				BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,6 +263,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				F4CA8DFC67984C32B2B15D95 /* SourceSansPro-Bold.ttf in Resources */,
+				EAEE6A665A264FE38D93192D /* SourceSansPro-Regular.ttf in Resources */,
+				1F3A04287A5D46ADBF1C474D /* SourceSansPro-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

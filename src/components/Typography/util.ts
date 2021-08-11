@@ -17,12 +17,12 @@ export type FontType = 'regular' | 'medium' | 'bold';
 
 export const fontTypeMapping: {[key in FontType]: TextStyle} = {
   regular: {
-    // fontFamily: 'Roboto-Regular',
+    fontFamily: 'SourceSansPro-Regular',
   },
   medium: {
-    // fontFamily: 'Roboto-Medium',
+    fontFamily: 'SourceSansPro-SemiBold',
   },
   bold: {
-    // fontFamily: 'Roboto-Bold',
+    fontFamily: 'SourceSansPro-Bold',
   },
 };
