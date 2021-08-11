@@ -1,22 +1,22 @@
 import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import SearchForm from '~/features/Explore/components/SearchForm';
-import theme from '~/theme';
+import SearchForm from '@explore/components/SearchForm';
+import Typography from '~/components/Typography';
+import colors from '~/theme/colors';
 
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: 'red'},
+  container: {flex: 1, backgroundColor: colors.gray300},
   safeArea: {
     position: 'absolute',
     bottom: 0,
     borderTopLeftRadius: 16,
-    width: '100%',
     padding: 16,
-    backgroundColor: theme.colors.backgroundColor,
+    backgroundColor: colors.white100,
   },
   formWrapper: {
     flex: 1,
-    backgroundColor: theme.colors.backgroundColor,
+    backgroundColor: colors.white100,
   },
   textContainer: {
     flex: 1,
@@ -25,9 +25,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   subtitle: {
-    marginVertical: 24,
+    marginVertical: 16,
     textAlign: 'center',
-    color: 'gray',
   },
 });
 
@@ -37,11 +36,11 @@ export default function ExploreScreen() {
       <SafeAreaView edges={['bottom']} style={styles.safeArea}>
         <View style={styles.formWrapper}>
           <View style={styles.textContainer}>
-            <Text>Go together, Go Far</Text>
-            <Text style={styles.subtitle}>
+            <Typography component="h1">Go together, Go Far</Typography>
+            <Typography style={styles.subtitle}>
               Welcome travelers! Discover new locations with spaces designer for
               you and the people you love.
-            </Text>
+            </Typography>
           </View>
           <SearchForm />
         </View>
