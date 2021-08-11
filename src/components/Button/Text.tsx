@@ -5,5 +5,7 @@ import {useButtonContext} from './context';
 export default function Text(props: PropsWithChildren<TypographyProps>) {
   const {color} = useButtonContext();
 
-  return <Typography component="body" color={color} {...props} />;
+  return (
+    <Typography component="text16" fontType="medium" color={color} {...props} />
+  );
 }

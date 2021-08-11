@@ -72,6 +72,11 @@ const oranges = {
   orange800: '#ce7300',
 };
 
+const avant = {
+  neutral: '#505051',
+  primary: '#022B54',
+};
+
 const colors = {
   ...blacks,
   ...whites,
@@ -82,6 +87,7 @@ const colors = {
   ...yellows,
   ...blues,
   ...oranges,
+  ...avant,
   androidRippleColor: 'rgba(0, 0, 0, .32)',
 };
 

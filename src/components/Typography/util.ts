@@ -1,14 +1,14 @@
 import {StyleSheet, TextStyle} from 'react-native';
 
-export type TypographyComponent = 'h1' | 'body';
+export type TypographyComponent = 'text32' | 'text16';
 
 export const fontSizeMapping: {
   [key in TypographyComponent]: TextStyle;
 } = StyleSheet.create({
-  h1: {
+  text32: {
     fontSize: 32,
   },
-  body: {
+  text16: {
     fontSize: 16,
   },
 });

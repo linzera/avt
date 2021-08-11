@@ -1,6 +1,5 @@
 import {StyleSheet, ViewStyle} from 'react-native';
 import colors, {Color} from '~/theme/colors';
-import {TypographyProps} from '../Typography';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'common';
 export type ButtonVariantProp = Exclude<ButtonVariant, 'common'>;
@@ -8,12 +7,12 @@ export type ButtonVariantProp = Exclude<ButtonVariant, 'common'>;
 export const buttonStyles: Record<ButtonVariant, ViewStyle> = StyleSheet.create(
   {
     common: {
-      padding: 16,
+      paddingVertical: 12,
       justifyContent: 'center',
       alignItems: 'center',
     },
     primary: {
-      backgroundColor: colors.blue500,
+      backgroundColor: colors.primary,
       borderRadius: 2,
     },
     secondary: {

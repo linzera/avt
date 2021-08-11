@@ -31,7 +31,7 @@ function Button({variant, style, ...rest}: Props) {
         style={({pressed}) => [
           Platform.select({
             ios: {
-              opacity: pressed ? 0.2 : 1,
+              opacity: pressed ? 0.4 : 1,
             },
           }),
           pressableStyle,

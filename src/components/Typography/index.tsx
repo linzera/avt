@@ -22,15 +22,15 @@ export default function Typography({
   color,
   ...rest
 }: TypographyProps) {
-  const fontSizeStyle = fontSizeMapping[component || 'body'];
+  const fontSizeStyle = fontSizeMapping[component || 'text16'];
   const fontTypeStyle = fontTypeMapping[fontType || 'regular'];
   const textColor = colors[color || 'black80'];
 
   const flattenedStyles = StyleSheet.flatten([
-    style,
     fontSizeStyle,
     fontTypeStyle,
     {color: textColor},
+    style,
   ]);
 
   return <Text style={flattenedStyles} {...rest} />;
