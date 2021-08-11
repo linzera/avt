@@ -1,24 +1,24 @@
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import {
   Platform,
   Pressable,
   PressableProps,
   StyleSheet,
-  Text,
-  TextProps,
   ViewStyle,
 } from 'react-native';
-import {buttonStyles} from './styles';
-
-type ButtonVariant = 'primary' | 'secondary';
+import {ButtonContextProvider} from './context';
+import Text from './Text';
+import {buttonStyles, ButtonVariantProp} from './util';
 
 interface Props extends PressableProps {
-  variant: ButtonVariant;
+  variant?: ButtonVariantProp;
   style?: ViewStyle;
 }
 
 function Button({variant, style, ...rest}: Props) {
-  const buttonVariantStyle = buttonStyles[variant];
+  const defaultVariant = variant || 'primary';
+
+  const buttonVariantStyle = buttonStyles[defaultVariant];
   const pressableStyle = StyleSheet.flatten([
     buttonStyles.common,
     buttonVariantStyle,
@@ -26,23 +26,25 @@ function Button({variant, style, ...rest}: Props) {
   ]);
 
   return (
-    <Pressable
-      style={({pressed}) => [
-        Platform.select({
-          ios: {
-            opacity: pressed ? 0.2 : 1,
-          },
-        }),
-        pressableStyle,
-      ]}
-      android_ripple={{
-        borderless: false,
-      }}
-      {...rest}
-    />
+    <ButtonContextProvider variant={defaultVariant}>
+      <Pressable
+        style={({pressed}) => [
+          Platform.select({
+            ios: {
+              opacity: pressed ? 0.2 : 1,
+            },
+          }),
+          pressableStyle,
+        ]}
+        android_ripple={{
+          borderless: false,
+        }}
+        {...rest}
+      />
+    </ButtonContextProvider>
   );
 }
 
-Button.Text = (props: PropsWithChildren<TextProps>) => <Text {...props} />;
+Button.Text = Text;
 
 export default Button;
