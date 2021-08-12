@@ -1,29 +1,12 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import Button from '~/components/Button';
 import FilterView from '@explore/components/FilterView';
 import NavigationHeader from '@explore/components/NavigationHeader';
 import RegionSectionList from '@explore/components/RegionSectionList';
 import DestinationSearchInput from '@explore/components/DestinationSearchInput';
+import LoadingView from '@explore/components/LoadingView';
+import ClearButton from '@explore/components/ClearFilterButton';
 import {useRegionFilter} from '@explore/hooks/use-region-filter';
-
-function ClearButton({
-  filterCount,
-  onPress,
-}: {
-  filterCount: number;
-  onPress: () => void;
-}) {
-  if (!filterCount) {
-    return null;
-  }
-
-  return (
-    <Button variant="secondary" onPress={onPress}>
-      <Button.Text color="accent">Clear all ({filterCount})</Button.Text>
-    </Button>
-  );
-}
 
 export default function DestinationScreen() {
   const [query, setQuery] = useState('');
@@ -44,12 +27,19 @@ export default function DestinationScreen() {
         }
       />
       <FilterView onSubmit={goBack}>
-        <DestinationSearchInput
-          value={query}
-          onChangeText={text => setQuery(text)}
-          onClear={() => setQuery('')}
-        />
-        {isRegionsReady && <RegionSectionList query={query} />}
+        <Choose>
+          <When condition={isRegionsReady}>
+            <DestinationSearchInput
+              value={query}
+              onChangeText={text => setQuery(text)}
+              onClear={() => setQuery('')}
+            />
+            <RegionSectionList query={query} />
+          </When>
+          <Otherwise>
+            <LoadingView />
+          </Otherwise>
+        </Choose>
       </FilterView>
     </>
   );
