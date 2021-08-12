@@ -40,6 +40,7 @@ export default function RegionSectionList({query}: Props) {
       keyExtractor={item => item.id}
       style={styles.sectionList}
       stickySectionHeadersEnabled={false}
+      keyboardShouldPersistTaps="handled"
       renderSectionHeader={({section: {title, data}}) => (
         <RegionSectionHeader
           title={title}
@@ -51,15 +52,19 @@ export default function RegionSectionList({query}: Props) {
         />
       )}
       ListHeaderComponent={
-        !isSearching ? (
+        <If condition={!isSearching}>
           <RegionListItem
             onPress={clearFilters}
             name="Any destination"
             isSelected={isAnyDestination}
           />
-        ) : undefined
+        </If>
       }
-      ListEmptyComponent={isSearching ? <SearchEmptyState /> : undefined}
+      ListEmptyComponent={
+        <If condition={isSearching}>
+          <SearchEmptyState />
+        </If>
+      }
       renderItem={({item}) => (
         <RegionListItem onPress={() => toggleRegion(item)} {...item} />
       )}

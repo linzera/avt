@@ -28,14 +28,19 @@ interface Props extends Pick<Region, 'name'> {
 }
 
 export default function RegionListItem({name, isSelected, onPress}: Props) {
-  const checkbox = isSelected ? <CheckboxSelected /> : <CheckboxUnselected />;
-
   return (
     <Pressable
       android_ripple={{borderless: false, color: colors.gray100}}
       onPress={onPress}
       style={styles.container}>
-      {checkbox}
+      <Choose>
+        <When condition={isSelected}>
+          <CheckboxSelected />
+        </When>
+        <Otherwise>
+          <CheckboxUnselected />
+        </Otherwise>
+      </Choose>
       <Typography style={[styles.label, isSelected && styles.selected]}>
         {name}
       </Typography>

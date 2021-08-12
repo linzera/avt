@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   NativeSyntheticEvent,
+  StyleSheet,
   TextInput,
   TextInputFocusEventData,
   TextInputProps,
@@ -11,6 +12,30 @@ import colors from '~/theme/colors';
 
 import SearchIcon from '@explore/assets/svg/search_icon.svg';
 import ClearIcon from '@explore/assets/svg/clear_icon.svg';
+
+const styles = StyleSheet.create({
+  container: {
+    borderBottomWidth: 1,
+    marginBottom: 20,
+    marginHorizontal: 20,
+    marginTop: 8,
+    paddingBottom: 4,
+    borderColor: colors.gray300,
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    flex: 1,
+    height: '100%',
+    color: colors.neutral,
+    marginLeft: 8,
+    fontSize: 16,
+  },
+  focusedContainer: {
+    borderColor: colors.accent,
+  },
+});
 
 interface Props extends TextInputProps {
   onClear: () => void;
@@ -42,28 +67,10 @@ export default function DestinationSearchInput({
   }
 
   return (
-    <View
-      style={{
-        borderBottomWidth: 1,
-        marginBottom: 20,
-        marginHorizontal: 20,
-        marginTop: 8,
-        paddingBottom: 4,
-        borderColor: colors.gray300,
-        height: 50,
-        flexDirection: 'row',
-        alignItems: 'center',
-        ...(isFocused ? {borderColor: colors.accent} : {}),
-      }}>
+    <View style={[styles.container, isFocused && styles.focusedContainer]}>
       <SearchIcon />
       <TextInput
-        style={{
-          flex: 1,
-          height: '100%',
-          color: 'black',
-          marginLeft: 8,
-          fontSize: 16,
-        }}
+        style={styles.input}
         value={value}
         onFocus={onFocusText}
         onBlur={onBlurText}
@@ -71,11 +78,11 @@ export default function DestinationSearchInput({
         placeholderTextColor="#022B5440"
         {...rest}
       />
-      {value ? (
+      <If condition={!!value}>
         <Button onPress={onClear} variant="icon">
           <ClearIcon />
         </Button>
-      ) : undefined}
+      </If>
     </View>
   );
 }

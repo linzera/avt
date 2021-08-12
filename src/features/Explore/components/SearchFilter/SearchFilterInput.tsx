@@ -35,15 +35,18 @@ export default function SearchInput({
       <Typography fontType="medium" color="accent" style={styles.label}>
         {label}
       </Typography>
-      {value ? (
-        <Typography numberOfLines={1} color="neutral" style={styles.value}>
-          {value}
-        </Typography>
-      ) : (
-        <Typography style={styles.placeholder} color="primary">
-          {placeholder}
-        </Typography>
-      )}
+      <Choose>
+        <When condition={!!value}>
+          <Typography numberOfLines={1} color="neutral" style={styles.value}>
+            {value}
+          </Typography>
+        </When>
+        <Otherwise>
+          <Typography style={styles.placeholder} color="primary">
+            {placeholder}
+          </Typography>
+        </Otherwise>
+      </Choose>
     </TouchableOpacity>
   );
 }
