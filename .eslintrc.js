@@ -17,4 +17,5 @@ module.exports = {
       typescript: {},
     },
   },
+  ignorePatterns: ['metro.config.js'],
 };

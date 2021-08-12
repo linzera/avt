@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import SearchForm from '@explore/components/SearchForm';
 import Typography from '~/components/Typography';
 import colors from '~/theme/colors';
+import SearchFilter from '@explore/components/SearchFilter';
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: colors.gray300},
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   subtitle: {
-    marginBottom: 30,
+    marginBottom: 24,
     textAlign: 'center',
   },
 });
@@ -70,7 +70,7 @@ export default function ExploreScreen() {
                 for you and the people you love.
               </Typography>
             </View>
-            <SearchForm />
+            <SearchFilter />
           </View>
         </SafeAreaView>
       </View>

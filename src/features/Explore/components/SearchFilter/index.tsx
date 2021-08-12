@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import SearchInput from './SearchInput';
+import SearchInput from './SearchFilterInput';
 import routes from '@explore/navigation/routes';
 import Button from '~/components/Button';
 import colors from '~/theme/colors';
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function SearchForm() {
+export default function SearchFilter() {
   const {navigate} = useNavigation();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
