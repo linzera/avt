@@ -9,10 +9,12 @@ import ChevronLeft from '@explore/assets/svg/chevron_left.svg';
 import Typography from '~/components/Typography';
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     backgroundColor: colors.white100,
+  },
+  container: {
+    height: 56,
     paddingHorizontal: 16,
-    paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -33,16 +35,18 @@ export default function NavigationHeader({title, action}: Props) {
   return (
     <>
       <StatusBar animated barStyle="dark-content" />
-      <SafeAreaView edges={['top']} style={styles.container}>
-        <Button variant="icon" onPress={goBack}>
-          <ChevronLeft />
-        </Button>
-        <View style={styles.titleContainer}>
-          <Typography fontType="medium" color="primary">
-            {title}
-          </Typography>
+      <SafeAreaView edges={['top']} style={styles.safeArea}>
+        <View style={styles.container}>
+          <Button variant="icon" onPress={goBack}>
+            <ChevronLeft />
+          </Button>
+          <View style={styles.titleContainer}>
+            <Typography fontType="medium" color="primary">
+              {title}
+            </Typography>
+          </View>
+          {action}
         </View>
-        {action}
       </SafeAreaView>
     </>
   );

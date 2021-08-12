@@ -1,6 +1,6 @@
 import React, {createContext, PropsWithChildren, useContext} from 'react';
-import {ButtonVariantProp, getDerivedChildrenColorByVariant} from './util';
 import {Color} from '~/theme/colors';
+import {ButtonVariantProp, getDerivedChildrenColorByVariant} from './util';
 
 const defaultValue: Record<string, Color> = {
   color: 'white100',

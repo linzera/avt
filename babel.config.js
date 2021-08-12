@@ -10,7 +10,7 @@ module.exports = {
             rootPathPrefix: '~/',
           },
           {
-            rootPathSuffix: './src/features/Explore',
+            rootPathSuffix: './src/features/explore',
             rootPathPrefix: '@explore/',
           },
         ],

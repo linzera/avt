@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
   label: {
     marginBottom: 4,
   },
+  value: {
+    flex: 1,
+  },
   placeholder: {
     opacity: 0.3,
   },
@@ -33,7 +36,9 @@ export default function SearchInput({
         {label}
       </Typography>
       {value ? (
-        <Typography color="neutral">{value}</Typography>
+        <Typography numberOfLines={1} color="neutral" style={styles.value}>
+          {value}
+        </Typography>
       ) : (
         <Typography style={styles.placeholder} color="primary">
           {placeholder}

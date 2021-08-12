@@ -1,17 +1,22 @@
 import {StyleSheet, TextStyle} from 'react-native';
 
-export type TypographyComponent = 'text32' | 'text16';
+export type TypographyComponent = 'text32' | 'text16' | 'text18' | 'text14';
 
-export const fontSizeMapping: {
-  [key in TypographyComponent]: TextStyle;
-} = StyleSheet.create({
-  text32: {
-    fontSize: 32,
-  },
-  text16: {
-    fontSize: 16,
-  },
-});
+export const fontSizeMapping: Record<TypographyComponent, TextStyle> =
+  StyleSheet.create({
+    text32: {
+      fontSize: 32,
+    },
+    text18: {
+      fontSize: 18,
+    },
+    text16: {
+      fontSize: 16,
+    },
+    text14: {
+      fontSize: 14,
+    },
+  });
 
 export type FontType = 'regular' | 'medium' | 'bold';
 

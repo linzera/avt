@@ -1,17 +1,17 @@
 import React, {PropsWithChildren} from 'react';
-import {TextStyle, Text, StyleSheet} from 'react-native';
+import {TextStyle, Text, StyleSheet, StyleProp, TextProps} from 'react-native';
+import colors, {Color} from '~/theme/colors';
 import {
   fontSizeMapping,
   fontTypeMapping,
   TypographyComponent,
   FontType,
 } from './util';
-import colors, {Color} from '~/theme/colors';
 
-export interface TypographyProps extends PropsWithChildren<TextStyle> {
+export interface TypographyProps extends PropsWithChildren<TextProps> {
   component?: TypographyComponent;
   fontType?: FontType;
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   color?: Color;
 }
 

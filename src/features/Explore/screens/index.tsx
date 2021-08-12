@@ -3,7 +3,7 @@ import {Image, StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Typography from '~/components/Typography';
 import colors from '~/theme/colors';
-import SearchFilter from '@explore/components/SearchFilter';
+import SearchFilter from '~/features/explore/components/SearchFilter';
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: colors.gray300},
