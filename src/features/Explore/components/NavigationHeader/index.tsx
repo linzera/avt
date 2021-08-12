@@ -39,7 +39,7 @@ export default function NavigationHeader({title, action}: Props) {
         </Button>
         <View style={styles.titleContainer}>
           <Typography fontType="medium" color="primary">
-            Where
+            {title}
           </Typography>
         </View>
         {action}
