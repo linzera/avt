@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -29,7 +29,11 @@ interface Props {
   action?: React.ReactNode;
 }
 
-export default function NavigationHeader({title, action}: Props) {
+export default function NavigationHeader({
+  title,
+  action,
+  children,
+}: PropsWithChildren<Props>) {
   const {goBack} = useNavigation();
 
   return (
@@ -47,6 +51,7 @@ export default function NavigationHeader({title, action}: Props) {
           </View>
           {action}
         </View>
+        {children}
       </SafeAreaView>
     </>
   );

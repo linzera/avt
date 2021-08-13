@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import ExploreScreen from '@explore/screens';
-import PeriodScreen from '@explore/screens/Period';
+import PeriodScreen from '~/features/explore/screens/Period';
 import GuestsScreen from '@explore/screens/Guests';
 import DestinationScreen from '@explore/screens/Destination';
 import SearchFilterProvider from '@explore/context/filter-provider';

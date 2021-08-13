@@ -1,11 +1,19 @@
 import {StyleSheet, TextStyle} from 'react-native';
 
-export type TypographyComponent = 'text32' | 'text16' | 'text18' | 'text14';
+export type TypographyComponent =
+  | 'text32'
+  | 'text20'
+  | 'text18'
+  | 'text16'
+  | 'text14';
 
 export const fontSizeMapping: Record<TypographyComponent, TextStyle> =
   StyleSheet.create({
     text32: {
       fontSize: 32,
+    },
+    text20: {
+      fontSize: 20,
     },
     text18: {
       fontSize: 18,

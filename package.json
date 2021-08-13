@@ -8,15 +8,18 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pod-install": "pod install --project-directory=ios",
     "postinstall": "npx patch-package"
   },
   "dependencies": {
     "@apollo/client": "^3.4.7",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.4",
+    "@react-navigation/stack": "^6.0.6",
     "graphql": "^15.5.1",
     "react": "17.0.1",
     "react-native": "0.64.1",
+    "react-native-calendars": "^1.1264.0",
     "react-native-safe-area-context": "^3.3.0",
     "react-native-screens": "^3.5.0",
     "react-native-svg": "^12.1.1"
@@ -28,6 +31,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.64.5",
+    "@types/react-native-calendars": "^1.1264.2",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/parser": "^4.29.1",
     "babel-jest": "^26.6.3",

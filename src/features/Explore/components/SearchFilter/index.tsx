@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useRegionFilter} from '@explore/hooks/use-region-filter';
+import {useSearchFilter} from '@explore/context/filter-provider';
 import routes from '~/features/explore/navigation/routes';
 import Button from '~/components/Button';
 import colors from '~/theme/colors';
@@ -21,6 +22,7 @@ const styles = StyleSheet.create({
 
 export default function SearchFilter() {
   const {navigate} = useNavigation();
+  const {formattedPeriod} = useSearchFilter();
   const {regions, isAnyDestination} = useRegionFilter();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -52,6 +54,7 @@ export default function SearchFilter() {
         <SearchInput
           label="Check In - Check Out"
           placeholder="Select dates"
+          value={formattedPeriod}
           onPress={() => onSearchInputPress(routes.period)}
         />
         <Divider />

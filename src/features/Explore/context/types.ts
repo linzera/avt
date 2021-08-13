@@ -12,8 +12,16 @@ export interface RegionsQuery {
   regions: Region[];
 }
 
+export interface Period {
+  checkIn: string;
+  checkOut: string;
+}
+
 export interface FilterState {
   regions: RegionState[];
+  period: Period;
+  formattedPeriod: string;
   isRegionsReady: boolean;
   setRegions: (regions: RegionState[]) => void;
+  setPeriod: (period: Period) => void;
 }

@@ -1,0 +1,24 @@
+diff --git a/node_modules/@types/react-native-calendars/index.d.ts b/node_modules/@types/react-native-calendars/index.d.ts
+index be2f55f..265fc8a 100755
+--- a/node_modules/@types/react-native-calendars/index.d.ts
++++ b/node_modules/@types/react-native-calendars/index.d.ts
+@@ -7,7 +7,7 @@
+ // TypeScript Version: 2.8
+ 
+ import * as React from "react";
+-import { ImageSourcePropType, StyleProp, TextStyle, ViewStyle } from "react-native";
++import { ImageSourcePropType, StyleProp, TextStyle, ViewStyle, FlatListProps } from "react-native";
+ import XDateLocaleConfig = require("xdate");
+ 
+ export class LocaleConfig extends XDateLocaleConfig {
+@@ -426,7 +426,9 @@ export interface CalendarListBaseProps extends CalendarBaseProps {
+     selected?: string | undefined;
+ }
+ 
+-export class CalendarList extends React.Component<CalendarMarkingProps & CalendarListBaseProps> {}
++export class CalendarList extends React.Component<CalendarMarkingProps & CalendarListBaseProps & Pick<FlatListProps<any>, 'onScroll'>> {}
++
++export type CalendarListType = typeof CalendarList;
+ 
+ export interface AgendaThemeStyle extends CalendarTheme {
+     agendaDayNumColor?: string | undefined;
