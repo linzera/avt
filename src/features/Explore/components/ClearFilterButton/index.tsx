@@ -10,7 +10,7 @@ export default function ClearButton({filterCount, onPress}: Props) {
   return (
     <Button variant="secondary" onPress={onPress}>
       <Button.Text color="accent">
-        Clear all <If condition={!!filterCount}>({filterCount})</If>{' '}
+        Clear all<If condition={!!filterCount}> ({filterCount})</If>{' '}
       </Button.Text>
     </Button>
   );

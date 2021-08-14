@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     marginLeft: 16,
     flex: 1,
+    marginRight: 4,
   },
 });
 
@@ -45,7 +46,7 @@ export default function NavigationHeader({
             <ChevronLeft />
           </Button>
           <View style={styles.titleContainer}>
-            <Typography fontType="medium" color="primary">
+            <Typography numberOfLines={1} fontType="medium" color="primary">
               {title}
             </Typography>
           </View>

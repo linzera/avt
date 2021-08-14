@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useRegionFilter} from '@explore/hooks/use-region-filter';
-import {useSearchFilter} from '@explore/context/filter-provider';
-import routes from '~/features/explore/navigation/routes';
+import {useSearchFilter} from '@explore/context/filter/Provider';
+import routes from '@explore/navigation/routes';
 import Button from '~/components/Button';
 import colors from '~/theme/colors';
 import Divider from '~/components/Divider';
@@ -22,12 +22,14 @@ const styles = StyleSheet.create({
 
 export default function SearchFilter() {
   const {navigate} = useNavigation();
-  const {formattedPeriod} = useSearchFilter();
+  const {formattedPeriod, guestsCount} = useSearchFilter();
   const {regions, isAnyDestination} = useRegionFilter();
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const onSearchInputPress = (route: string) => navigate(route);
+  function onSearchInputPress(route: string) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    navigate(route);
+  }
 
   function buildDestinationValue() {
     if (isAnyDestination) {
@@ -39,6 +41,21 @@ export default function SearchFilter() {
       .map(region => region.name)
       .sort()
       .join(', ');
+  }
+
+  function getGuestValue() {
+    if (guestsCount === 0) {
+      return '';
+    }
+
+    const baseValue = `${guestsCount} guest`;
+
+    if (guestsCount === 1) {
+      return baseValue;
+    }
+
+    // Plural, simple as possible, no need for INTL
+    return `${baseValue}s`;
   }
 
   return (
@@ -61,10 +78,11 @@ export default function SearchFilter() {
         <SearchInput
           label="Who"
           placeholder="Add guests"
+          value={getGuestValue()}
           onPress={() => onSearchInputPress(routes.guests)}
         />
       </View>
-      <Button variant="primary">
+      <Button variant="primary" onPress={() => navigate(routes.homes)}>
         <Button.Text>Show homes</Button.Text>
       </Button>
     </>

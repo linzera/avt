@@ -4,7 +4,7 @@ import Typography from '~/components/Typography';
 import colors from '~/theme/colors';
 import CheckboxSelected from '@explore/assets/svg/selected.svg';
 import CheckboxUnselected from '@explore/assets/svg/unselected.svg';
-import {Region} from '@explore/context/types';
+import {Region} from '~/features/explore/context/filter/types';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,5 @@
-import {useSearchFilter} from '@explore/context/filter-provider';
-import {RegionState} from '@explore/context/types';
+import {useSearchFilter} from '@explore/context/filter/Provider';
+import {RegionState} from '@explore/context/filter/types';
 
 export function useRegionFilter() {
   const {regions, isRegionsReady, setRegions} = useSearchFilter();

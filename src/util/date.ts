@@ -1,4 +1,4 @@
-import {Period} from '~/features/explore/context/types';
+import {Period} from '~/features/explore/context/filter/types';
 
 export const MONTH_MAPPING = [
   'January',

@@ -13,7 +13,7 @@ import Typography from '~/components/Typography';
 import FilterView from '@explore/components/FilterView';
 import NavigationHeader from '@explore/components/NavigationHeader';
 import ClearButton from '@explore/components/ClearFilterButton';
-import {useSearchFilter} from '@explore/context/filter-provider';
+import {useSearchFilter} from '@explore/context/filter/Provider';
 import {
   ABBREVIATED_DAYS,
   formattedDate,
@@ -221,6 +221,11 @@ export default function PeriodScreen() {
                 textDayFontSize: 16,
                 textDayFontWeight: '600',
                 textDisabledColor: `${colors.primary}20`,
+                'stylesheet.day.period': {
+                  base: {
+                    overflow: 'hidden',
+                  },
+                },
               }}
             />
           </When>

@@ -1,4 +1,4 @@
-import {RegionState} from '@explore/context/types';
+import {RegionState} from '@explore/context/filter/types';
 import {stableSort} from '~/util/sort';
 
 interface Section {

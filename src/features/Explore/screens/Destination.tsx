@@ -20,10 +20,12 @@ export default function DestinationScreen() {
       <NavigationHeader
         title="Where"
         action={
-          <ClearButton
-            filterCount={appliedFilterCount}
-            onPress={clearFilters}
-          />
+          <If condition={appliedFilterCount > 0}>
+            <ClearButton
+              filterCount={appliedFilterCount}
+              onPress={clearFilters}
+            />
+          </If>
         }
       />
       <FilterView onSubmit={goBack}>

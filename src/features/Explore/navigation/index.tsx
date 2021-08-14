@@ -2,10 +2,11 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import ExploreScreen from '@explore/screens';
-import PeriodScreen from '~/features/explore/screens/Period';
+import PeriodScreen from '@explore/screens/Period';
 import GuestsScreen from '@explore/screens/Guests';
 import DestinationScreen from '@explore/screens/Destination';
-import SearchFilterProvider from '@explore/context/filter-provider';
+import HomesScreen from '@explore/screens/Homes';
+import SearchFilterProvider from '@explore/context/filter/Provider';
 import routes from './routes';
 
 export const Stack = createNativeStackNavigator();
@@ -16,6 +17,7 @@ export default function ExploreStack() {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Group>
           <Stack.Screen name={routes.explore} component={ExploreScreen} />
+          <Stack.Screen name={routes.homes} component={HomesScreen} />
         </Stack.Group>
         <Stack.Group
           screenOptions={{

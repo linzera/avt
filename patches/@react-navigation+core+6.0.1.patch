@@ -1,0 +1,25 @@
+diff --git a/node_modules/@react-navigation/core/lib/typescript/src/index.d.ts b/node_modules/@react-navigation/core/lib/typescript/src/index.d.ts
+index 1697c73..0c3cfb6 100644
+--- a/node_modules/@react-navigation/core/lib/typescript/src/index.d.ts
++++ b/node_modules/@react-navigation/core/lib/typescript/src/index.d.ts
+@@ -21,3 +21,4 @@ export { default as useNavigationState } from './useNavigationState';
+ export { default as useRoute } from './useRoute';
+ export { default as validatePathConfig } from './validatePathConfig';
+ export * from '@react-navigation/routers';
++
+diff --git a/node_modules/@react-navigation/core/lib/typescript/src/types.d.ts b/node_modules/@react-navigation/core/lib/typescript/src/types.d.ts
+index afd9639..2fdbd34 100644
+--- a/node_modules/@react-navigation/core/lib/typescript/src/types.d.ts
++++ b/node_modules/@react-navigation/core/lib/typescript/src/types.d.ts
+@@ -1,8 +1,10 @@
+ import type { DefaultRouterOptions, InitialState, NavigationAction, NavigationState, ParamListBase, PartialState, Route } from '@react-navigation/routers';
++import { ExploreStackParamList } from '~/features/explore/navigation/routes';
+ import type * as React from 'react';
++
+ declare global {
+     namespace ReactNavigation {
+-        interface RootParamList {
++        interface RootParamList extends ExploreStackParamList{
+         }
+     }
+ }
