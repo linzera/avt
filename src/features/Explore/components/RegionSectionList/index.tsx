@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {SectionList, StyleSheet} from 'react-native';
-import {useRegionFilter} from '@explore/hooks/use-region-filter';
+import {RegionState} from '@explore/context/filter/types';
 import {extractSectionsFromRegionState} from './util';
 import RegionSectionHeader from './SectionHeader';
 import RegionListItem from './Item';
@@ -15,18 +15,22 @@ const styles = StyleSheet.create({
 const SELECT_ALL_THRESHOLD = 2;
 
 interface Props {
+  regions: RegionState[];
   query?: string;
+  onToggle: (region: RegionState) => void;
+  onToggleMany: (regions: RegionState[]) => void;
+  onClear: () => void;
+  isAnyDestination: boolean;
 }
 
-export default function RegionSectionList({query}: Props) {
-  const {
-    toggleRegion,
-    regions,
-    clearFilters,
-    selectManyRegions,
-    isAnyDestination,
-  } = useRegionFilter();
-
+export default function RegionSectionList({
+  query,
+  regions,
+  onToggle,
+  onToggleMany,
+  onClear,
+  isAnyDestination,
+}: Props) {
   const sections = useMemo(
     () => extractSectionsFromRegionState({regions, query}),
     [regions, query],
@@ -46,7 +50,7 @@ export default function RegionSectionList({query}: Props) {
           title={title}
           onSelectAll={
             data.length > SELECT_ALL_THRESHOLD
-              ? () => selectManyRegions(data)
+              ? () => onToggleMany(data)
               : undefined
           }
         />
@@ -54,7 +58,7 @@ export default function RegionSectionList({query}: Props) {
       ListHeaderComponent={
         <If condition={!isSearching}>
           <RegionListItem
-            onPress={clearFilters}
+            onPress={onClear}
             name="Any destination"
             isSelected={isAnyDestination}
           />
@@ -66,7 +70,7 @@ export default function RegionSectionList({query}: Props) {
         </If>
       }
       renderItem={({item}) => (
-        <RegionListItem onPress={() => toggleRegion(item)} {...item} />
+        <RegionListItem onPress={() => onToggle(item)} {...item} />
       )}
     />
   );

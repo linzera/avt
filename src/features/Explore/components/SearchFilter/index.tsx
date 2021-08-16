@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {useRegionFilter} from '@explore/hooks/use-region-filter';
 import {useSearchFilter} from '@explore/context/filter/Provider';
 import routes from '@explore/navigation/routes';
 import Button from '~/components/Button';
@@ -26,8 +25,8 @@ export default function SearchFilter(props: {
   showPeriod: boolean;
 }) {
   const {navigate} = useNavigation();
-  const {formattedPeriod, guestsCount} = useSearchFilter();
-  const {regions, isAnyDestination} = useRegionFilter();
+  const {formattedPeriod, guestsCount, regions, isAnyDestination} =
+    useSearchFilter();
 
   function onSearchInputPress(route: string) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState} from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -10,7 +10,7 @@ import CountInput from '@explore/components/CountInput';
 import Typography from '~/components/Typography';
 import Divider from '~/components/Divider';
 import {Guest, GuestVariant} from '../context/filter/types';
-import {useSearchFilter} from '../context/filter/Provider';
+import {initialGuestValues, useSearchFilter} from '../context/filter/Provider';
 
 const styles = StyleSheet.create({
   list: {
@@ -56,7 +56,8 @@ const GUESTS_MAPPING: Record<GuestVariant, Guest> = {
 };
 
 export default function GuestsScreen() {
-  const {guests, setGuests, guestsCount, clearGuests} = useSearchFilter();
+  const searchFilter = useSearchFilter();
+  const [guests, setGuests] = useState(searchFilter.guests);
   const {goBack} = useNavigation();
 
   const data = useMemo(() => Object.values(GUESTS_MAPPING), []);
@@ -65,11 +66,26 @@ export default function GuestsScreen() {
     guest => guest.count != 0,
   ).length;
 
+  const guestsCount = useMemo(() => {
+    return Object.values(guests)
+      .map(guest => guest.count)
+      .reduce((result, cur) => result + cur, 0);
+  }, [guests]);
+
+  function clearGuests() {
+    setGuests(initialGuestValues);
+  }
+
   function onCountPress(newValue: number, id: GuestVariant) {
     setGuests({
       ...guests,
       [id]: {count: newValue},
     });
+  }
+
+  function onSubmit() {
+    searchFilter.setGuests(guests);
+    goBack();
   }
 
   function renderItem({label, description, id, maxCount}: Guest) {
@@ -107,7 +123,7 @@ export default function GuestsScreen() {
           </If>
         }
       />
-      <FilterView onSubmit={goBack}>
+      <FilterView onSubmit={onSubmit}>
         <FlatList
           style={styles.list}
           data={data}

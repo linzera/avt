@@ -1,12 +1,14 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import SearchInput from '@explore/components/SearchFilter/SearchFilterInput';
-import Divider from '~/components/Divider';
-import FilterIcon from '@explore/assets/svg/filter_icon.svg';
-import colors from '~/theme/colors';
 import {useNavigation} from '@react-navigation/native';
-import routes from '../../navigation/routes';
-import {useSearchFilter} from '../../context/filter/Provider';
+import Divider from '~/components/Divider';
+import Typography from '~/components/Typography';
+import colors from '~/theme/colors';
+
+import {useSearchFilter} from '@explore/context/filter/Provider';
+import SearchInput from '@explore/components/SearchFilter/SearchFilterInput';
+import FilterIcon from '@explore/assets/svg/filter_icon.svg';
+import routes from '@explore/navigation/routes';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +33,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   divider: {marginVertical: 8},
+  badge: {
+    position: 'absolute',
+    top: 4,
+    right: -8,
+    backgroundColor: colors.primary,
+    borderRadius: 60,
+    width: 18,
+    height: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default function Footer(props: {
@@ -38,7 +51,7 @@ export default function Footer(props: {
   refetch: () => void;
 }) {
   const {navigate} = useNavigation();
-  const {formattedPeriod} = useSearchFilter();
+  const {formattedPeriod, filtersAppliedCount} = useSearchFilter();
 
   return (
     <View style={styles.container}>
@@ -58,6 +71,13 @@ export default function Footer(props: {
           onPress={props.onFilterPress}
           style={styles.iconButton}>
           <FilterIcon />
+          <If condition={filtersAppliedCount > 0}>
+            <View style={styles.badge}>
+              <Typography fontType="medium" color="white100" component="text12">
+                {filtersAppliedCount}
+              </Typography>
+            </View>
+          </If>
         </TouchableOpacity>
       </View>
     </View>

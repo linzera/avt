@@ -98,14 +98,14 @@ function HomeItem({
               <Typography color="primary" fontType="bold">
                 {total}
               </Typography>{' '}
-              homes
-              <If condition={!isAnyDestination}>
-                {' '}
+              homes{' '}
+              <Typography color="primary" fontType="bold">
                 in{' '}
-                <Typography color="primary" fontType="bold">
-                  {regionName}
-                </Typography>
-              </If>
+                <Choose>
+                  <When condition={isAnyDestination}>any destination</When>
+                  <Otherwise>{regionName}</Otherwise>
+                </Choose>
+              </Typography>
             </Typography>
           </View>
         </View>

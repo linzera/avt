@@ -16,7 +16,7 @@ import {
 } from './types';
 import {GET_REGIONS_QUERY} from './queries';
 
-const initialGuestValues: Record<GuestVariant, GuestCountState> = {
+export const initialGuestValues: Record<GuestVariant, GuestCountState> = {
   adult: {count: 0},
   children: {count: 0},
   infants: {count: 0},
@@ -34,11 +34,11 @@ const initialValues = {
   isRegionsReady: false,
   guestsCount: 0,
   filtersAppliedCount: 0,
+  isAnyDestination: true,
   setPeriod: () => undefined,
   setRegions: () => undefined,
   setGuests: () => undefined,
-  clearGuests: () => undefined,
-  clearPeriod: () => undefined,
+  clearFilters: () => undefined,
 };
 
 const SearchFilterContext = createContext<FilterState>(initialValues);
@@ -54,6 +54,7 @@ export default function SearchFilterProvider(props: {
   );
 
   const formattedPeriod = useMemo(() => formatPeriodLabel(period), [period]);
+  const isAnyDestination = !regions.find(region => region.isSelected);
 
   const guestsCount = useMemo(() => {
     return Object.values(guests)
@@ -67,11 +68,9 @@ export default function SearchFilterProvider(props: {
     if (regions.find(region => region.isSelected)) {
       counter++;
     }
-
     if (guestsCount > 0) {
       counter++;
     }
-
     if (period.checkIn || period.checkOut) {
       counter++;
     }
@@ -97,12 +96,10 @@ export default function SearchFilterProvider(props: {
     }
   }, [regionsQueryData]);
 
-  function clearGuests() {
-    setGuests(initialValues.guests);
-  }
-
-  function clearPeriod() {
+  function clearFilters() {
+    setRegions(regions.map(region => ({...region, isSelected: false})));
     setPeriod(initialValues.period);
+    setGuests(initialValues.guests);
   }
 
   return (
@@ -112,11 +109,11 @@ export default function SearchFilterProvider(props: {
         guests,
         period,
         isRegionsReady,
+        isAnyDestination,
         formattedPeriod,
         guestsCount,
         filtersAppliedCount,
-        clearGuests,
-        clearPeriod,
+        clearFilters,
         setRegions,
         setPeriod,
         setGuests,

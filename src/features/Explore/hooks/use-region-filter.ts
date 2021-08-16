@@ -1,8 +1,10 @@
+import {useState} from 'react';
 import {useSearchFilter} from '@explore/context/filter/Provider';
 import {RegionState} from '@explore/context/filter/types';
 
 export function useRegionFilter() {
-  const {regions, isRegionsReady, setRegions} = useSearchFilter();
+  const searchFilter = useSearchFilter();
+  const [regions, setRegions] = useState(searchFilter.regions);
 
   const isAnyDestination = !regions.find(region => region.isSelected);
 
@@ -24,12 +26,17 @@ export function useRegionFilter() {
     setRegions(regions.map(region => ({...region, isSelected: false})));
   }
 
+  function onSubmit() {
+    searchFilter.setRegions(regions);
+  }
+
   return {
     regions,
     isAnyDestination,
-    isRegionsReady,
+    isRegionsReady: searchFilter.isRegionsReady,
     toggleRegion,
     selectManyRegions,
     clearFilters,
+    onSubmit,
   };
 }

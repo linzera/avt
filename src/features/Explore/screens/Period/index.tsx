@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {
   InteractionManager,
   View,
@@ -16,6 +16,7 @@ import ClearButton from '@explore/components/ClearFilterButton';
 import {useSearchFilter} from '@explore/context/filter/Provider';
 import {
   ABBREVIATED_DAYS,
+  formatPeriodLabel,
   formattedDate,
   getDayDiffCount,
   MONTH_MAPPING,
@@ -100,7 +101,8 @@ function getMarkedPeriod(
 export default function PeriodScreen() {
   const [isReady, setReady] = useState(false);
   const [showHeaderLine, setShowHeaderLine] = useState(false);
-  const {period, setPeriod, formattedPeriod} = useSearchFilter();
+  const searchFilter = useSearchFilter();
+  const [period, setPeriod] = useState(searchFilter.period);
   const [markedDates, setMarkedDates] = useState({
     [period.checkIn]: {...markedProperties, startDate: true},
     [period.checkOut]: {...markedProperties, endDate: true},
@@ -109,6 +111,8 @@ export default function PeriodScreen() {
   const {checkIn, checkOut} = period;
 
   const navigation = useNavigation();
+
+  const formattedPeriod = useMemo(() => formatPeriodLabel(period), [period]);
 
   useFocusEffect(
     useCallback(() => {
@@ -176,6 +180,11 @@ export default function PeriodScreen() {
     );
   }
 
+  function onSubmit() {
+    searchFilter.setPeriod(period);
+    navigation.goBack();
+  }
+
   return (
     <>
       <NavigationHeader
@@ -197,7 +206,7 @@ export default function PeriodScreen() {
           ))}
         </View>
       </NavigationHeader>
-      <FilterView onSubmit={navigation.goBack}>
+      <FilterView onSubmit={onSubmit}>
         <Choose>
           <When condition={isReady}>
             <ExpansiveCalendarList

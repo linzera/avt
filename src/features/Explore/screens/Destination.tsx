@@ -10,10 +10,24 @@ import {useRegionFilter} from '@explore/hooks/use-region-filter';
 
 export default function DestinationScreen() {
   const [query, setQuery] = useState('');
-  const {isRegionsReady, regions, clearFilters} = useRegionFilter();
+  const {
+    isRegionsReady,
+    regions,
+    clearFilters,
+    onSubmit: onSubmitFilter,
+    selectManyRegions,
+    isAnyDestination,
+    toggleRegion,
+  } = useRegionFilter();
+
   const {goBack} = useNavigation();
 
   const appliedFilterCount = regions.filter(region => region.isSelected).length;
+
+  function onSubmit() {
+    onSubmitFilter();
+    goBack();
+  }
 
   return (
     <>
@@ -28,7 +42,7 @@ export default function DestinationScreen() {
           </If>
         }
       />
-      <FilterView onSubmit={goBack}>
+      <FilterView onSubmit={onSubmit}>
         <Choose>
           <When condition={isRegionsReady}>
             <DestinationSearchInput
@@ -36,7 +50,14 @@ export default function DestinationScreen() {
               onChangeText={text => setQuery(text)}
               onClear={() => setQuery('')}
             />
-            <RegionSectionList query={query} />
+            <RegionSectionList
+              regions={regions}
+              isAnyDestination={isAnyDestination}
+              onToggleMany={selectManyRegions}
+              onToggle={toggleRegion}
+              onClear={clearFilters}
+              query={query}
+            />
           </When>
           <Otherwise>
             <LoadingView />

@@ -11,9 +11,8 @@ import FooterFilter from '@explore/components/HomesList/Footer';
 import SearchFilter from '@explore/components/SearchFilter';
 import ClearButton from '@explore/components/ClearFilterButton';
 import CloseIcon from '@explore/assets/svg/close.svg';
-import {useSearchFilter} from '../context/filter/Provider';
-import {useSearchHomesPaginationQuery} from '../hooks/use-search-homes-query';
-import {useRegionFilter} from '../hooks/use-region-filter';
+import {useSearchFilter} from '@explore/context/filter/Provider';
+import {useSearchHomesPaginationQuery} from '@explore/hooks/use-search-homes-query';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -36,9 +35,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Homes() {
-  const {data, loading, refetch} = useSearchHomesPaginationQuery();
-  const {filtersAppliedCount, clearPeriod, clearGuests} = useSearchFilter();
-  const {clearFilters: clearRegions} = useRegionFilter();
+  const {data, loading, refetch, loadMore} = useSearchHomesPaginationQuery();
+  const {filtersAppliedCount, clearFilters} = useSearchFilter();
   const filterSheetRef = useRef<BottomSheetModal>(null);
 
   const snapPoints = useMemo(() => ['40%'], []);
@@ -47,7 +45,7 @@ export default function Homes() {
     <BottomSheetModalProvider>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar animated barStyle="dark-content" />
-        <HomeList data={data} isLoading={loading} />
+        <HomeList data={data} isLoading={loading} fetchMore={loadMore} />
         <FooterFilter
           refetch={refetch}
           onFilterPress={() => filterSheetRef.current?.present()}
@@ -71,18 +69,12 @@ export default function Homes() {
                 </Typography>
               </View>
               <If condition={!!filtersAppliedCount}>
-                <ClearButton
-                  onPress={() => {
-                    clearRegions();
-                    clearGuests();
-                    clearPeriod();
-                  }}
-                />
+                <ClearButton onPress={clearFilters} />
               </If>
             </View>
             <SearchFilter
               showPeriod={false}
-              submitTitle="Apply filters"
+              submitTitle="Search"
               onSubmit={() => filterSheetRef.current?.close()}
             />
           </View>

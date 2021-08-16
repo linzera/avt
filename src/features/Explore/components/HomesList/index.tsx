@@ -1,12 +1,11 @@
 import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
+import {SearchHomes} from '~/graphql/generated/SearchHomes';
 import {useHomeItemHeight} from '@explore/hooks/use-home-item-height';
-import {useSearchHomesPaginationQuery} from '@explore/hooks/use-search-homes-query';
-import {useRegionFilter} from '@explore/hooks/use-region-filter';
+import {useSearchFilter} from '@explore/context/filter/Provider';
 import LoadingView from '../LoadingView';
 import HomeItem from './HomeItem';
 import EmptyState from './EmptyState';
-import {SearchHomes} from '~/graphql/generated/SearchHomes';
 
 const styles = StyleSheet.create({
   list: {
@@ -16,11 +15,12 @@ const styles = StyleSheet.create({
 
 interface Props {
   data?: SearchHomes;
+  fetchMore: () => void;
   isLoading: boolean;
 }
 
-export default function HomeList({isLoading, data}: Props) {
-  const {isAnyDestination} = useRegionFilter();
+export default function HomeList({isLoading, data, fetchMore}: Props) {
+  const {isAnyDestination} = useSearchFilter();
   const itemHeight = useHomeItemHeight();
 
   return (
@@ -54,6 +54,8 @@ export default function HomeList({isLoading, data}: Props) {
               />
             )
           }
+          onEndReached={fetchMore}
+          onEndReachedThreshold={4}
         />
       </Otherwise>
     </Choose>
