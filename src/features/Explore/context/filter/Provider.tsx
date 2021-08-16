@@ -33,10 +33,12 @@ const initialValues = {
   formattedPeriod: '',
   isRegionsReady: false,
   guestsCount: 0,
+  filtersAppliedCount: 0,
   setPeriod: () => undefined,
   setRegions: () => undefined,
   setGuests: () => undefined,
   clearGuests: () => undefined,
+  clearPeriod: () => undefined,
 };
 
 const SearchFilterContext = createContext<FilterState>(initialValues);
@@ -58,6 +60,24 @@ export default function SearchFilterProvider(props: {
       .map(guest => guest.count)
       .reduce((result, cur) => result + cur, 0);
   }, [guests]);
+
+  const filtersAppliedCount = useMemo(() => {
+    let counter = 0;
+
+    if (regions.find(region => region.isSelected)) {
+      counter++;
+    }
+
+    if (guestsCount > 0) {
+      counter++;
+    }
+
+    if (period.checkIn || period.checkOut) {
+      counter++;
+    }
+
+    return counter;
+  }, [period, guestsCount, regions]);
 
   const {data: regionsQueryData} = useQuery<RegionsQuery>(GET_REGIONS_QUERY, {
     fetchPolicy: 'cache-first',
@@ -81,6 +101,10 @@ export default function SearchFilterProvider(props: {
     setGuests(initialValues.guests);
   }
 
+  function clearPeriod() {
+    setPeriod(initialValues.period);
+  }
+
   return (
     <SearchFilterContext.Provider
       value={{
@@ -90,7 +114,9 @@ export default function SearchFilterProvider(props: {
         isRegionsReady,
         formattedPeriod,
         guestsCount,
+        filtersAppliedCount,
         clearGuests,
+        clearPeriod,
         setRegions,
         setPeriod,
         setGuests,

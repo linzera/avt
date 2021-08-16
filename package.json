@@ -9,10 +9,12 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "pod-install": "pod install --project-directory=ios",
-    "postinstall": "npx patch-package"
+    "postinstall": "npx patch-package",
+    "apollo:codegen": "apollo client:codegen --target=typescript --localSchemaFile=src/graphql/schema.json --tagName=gql --outputFlat src/graphql/generated"
   },
   "dependencies": {
     "@apollo/client": "^3.4.7",
+    "@gorhom/bottom-sheet": "^4.0.0-alpha.27",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.4",
     "@react-navigation/stack": "^6.0.6",
@@ -20,6 +22,8 @@
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-calendars": "^1.1264.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.0",
     "react-native-safe-area-context": "^3.3.0",
     "react-native-screens": "^3.5.0",
     "react-native-svg": "^12.1.1"

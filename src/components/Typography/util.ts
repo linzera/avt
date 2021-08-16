@@ -5,7 +5,8 @@ export type TypographyComponent =
   | 'text20'
   | 'text18'
   | 'text16'
-  | 'text14';
+  | 'text14'
+  | 'text12';
 
 export const fontSizeMapping: Record<TypographyComponent, TextStyle> =
   StyleSheet.create({
@@ -23,6 +24,9 @@ export const fontSizeMapping: Record<TypographyComponent, TextStyle> =
     },
     text14: {
       fontSize: 14,
+    },
+    text12: {
+      fontSize: 12,
     },
   });
 

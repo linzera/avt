@@ -24,71 +24,18 @@ const grays = {
   gray800: '#424242',
 };
 
-const blueGrays = {
-  blueGray50: '#eceff1',
-  blueGray100: '#cfd8dc',
-  blueGray500: '#607d8b',
-  blueGray600: '#546e7a',
-  blueGray800: '#37474f',
-};
-
-const reds = {
-  red50: '#feede7',
-  red100: '#fdc9b9',
-  red500: '#f83c00',
-  red600: '#e23700',
-  red800: '#b52c00',
-};
-
-const greens = {
-  green50: '#f3f8ed',
-  green100: '#dbeacb',
-  green500: '#7cb342',
-  green600: '#669337',
-  green800: '#4f722a',
-};
-
-const yellows = {
-  yellow50: '#fefae8',
-  yellow100: '#fdf0bb',
-  yellow500: '#f9ca06',
-  yellow600: '#e3b806',
-  yellow800: '#cca605',
-};
-
-const blues = {
-  blue50: '#e7f5fd',
-  blue100: '#b9e1f9',
-  blue500: '#0091ea',
-  blue600: '#0077c0',
-  blue800: '#005d95',
-};
-
-const oranges = {
-  orange50: '#fef4e7',
-  orange100: '#fddfb9',
-  orange500: '#fb8c00',
-  orange600: '#e58000',
-  orange800: '#ce7300',
-};
-
 const avant = {
   neutral: '#505051',
   primary: '#022B54',
+  primary05: '#022B5450',
   accent: '#53C3D0',
 };
 
 const colors = {
-  ...blacks,
   ...whites,
   ...grays,
-  ...blueGrays,
-  ...reds,
-  ...greens,
-  ...yellows,
-  ...blues,
-  ...oranges,
   ...avant,
+  ...blacks,
   androidRippleColor: 'rgba(0, 0, 0, .32)',
 };
 

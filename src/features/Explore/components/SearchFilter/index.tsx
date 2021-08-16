@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function SearchFilter() {
+export default function SearchFilter(props: {
+  onSubmit: () => void;
+  submitTitle: string;
+  showPeriod: boolean;
+}) {
   const {navigate} = useNavigation();
   const {formattedPeriod, guestsCount} = useSearchFilter();
   const {regions, isAnyDestination} = useRegionFilter();
@@ -68,13 +72,15 @@ export default function SearchFilter() {
           value={buildDestinationValue()}
         />
         <Divider />
-        <SearchInput
-          label="Check In - Check Out"
-          placeholder="Select dates"
-          value={formattedPeriod}
-          onPress={() => onSearchInputPress(routes.period)}
-        />
-        <Divider />
+        <If condition={props.showPeriod}>
+          <SearchInput
+            label="Check In - Check Out"
+            placeholder="Select dates"
+            value={formattedPeriod}
+            onPress={() => onSearchInputPress(routes.period)}
+          />
+          <Divider />
+        </If>
         <SearchInput
           label="Who"
           placeholder="Add guests"
@@ -82,8 +88,8 @@ export default function SearchFilter() {
           onPress={() => onSearchInputPress(routes.guests)}
         />
       </View>
-      <Button variant="primary" onPress={() => navigate(routes.homes)}>
-        <Button.Text>Show homes</Button.Text>
+      <Button variant="primary" onPress={props.onSubmit}>
+        <Button.Text>{props.submitTitle}</Button.Text>
       </Button>
     </>
   );

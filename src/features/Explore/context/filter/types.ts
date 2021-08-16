@@ -39,7 +39,9 @@ export interface FilterState {
   formattedPeriod: string;
   isRegionsReady: boolean;
   guestsCount: number;
+  filtersAppliedCount: number;
   clearGuests: () => void;
+  clearPeriod: () => void;
   setRegions: (regions: RegionState[]) => void;
   setPeriod: (period: Period) => void;
   setGuests: (guests: Guests) => void;

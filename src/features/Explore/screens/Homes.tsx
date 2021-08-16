@@ -1,11 +1,93 @@
-import React from 'react';
+import React, {useMemo, useRef} from 'react';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import Typography from '~/components/Typography';
+import Button from '~/components/Button';
+import colors from '~/theme/colors';
+
+import HomeList from '@explore/components/HomesList';
+import FooterFilter from '@explore/components/HomesList/Footer';
+import SearchFilter from '@explore/components/SearchFilter';
+import ClearButton from '@explore/components/ClearFilterButton';
+import CloseIcon from '@explore/assets/svg/close.svg';
+import {useSearchFilter} from '../context/filter/Provider';
+import {useSearchHomesPaginationQuery} from '../hooks/use-search-homes-query';
+import {useRegionFilter} from '../hooks/use-region-filter';
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.white100,
+  },
+  sheetContainer: {paddingHorizontal: 24},
+  sheetHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+    height: 44,
+  },
+  sheetTitle: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default function Homes() {
+  const {data, loading, refetch} = useSearchHomesPaginationQuery();
+  const {filtersAppliedCount, clearPeriod, clearGuests} = useSearchFilter();
+  const {clearFilters: clearRegions} = useRegionFilter();
+  const filterSheetRef = useRef<BottomSheetModal>(null);
+
+  const snapPoints = useMemo(() => ['40%'], []);
+
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Typography>Teste</Typography>
-    </SafeAreaView>
+    <BottomSheetModalProvider>
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar animated barStyle="dark-content" />
+        <HomeList data={data} isLoading={loading} />
+        <FooterFilter
+          refetch={refetch}
+          onFilterPress={() => filterSheetRef.current?.present()}
+        />
+        <BottomSheetModal
+          index={0}
+          ref={filterSheetRef}
+          snapPoints={snapPoints}
+          onDismiss={refetch}>
+          <View style={styles.sheetContainer}>
+            <View style={styles.sheetHeader}>
+              <Button variant="icon">
+                <CloseIcon />
+              </Button>
+              <View style={styles.sheetTitle}>
+                <Typography
+                  color="primary"
+                  component="text18"
+                  fontType="medium">
+                  Filter Homes
+                </Typography>
+              </View>
+              <If condition={!!filtersAppliedCount}>
+                <ClearButton
+                  onPress={() => {
+                    clearRegions();
+                    clearGuests();
+                    clearPeriod();
+                  }}
+                />
+              </If>
+            </View>
+            <SearchFilter
+              showPeriod={false}
+              submitTitle="Apply filters"
+              onSubmit={() => filterSheetRef.current?.close()}
+            />
+          </View>
+        </BottomSheetModal>
+      </SafeAreaView>
+    </BottomSheetModalProvider>
   );
 }

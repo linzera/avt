@@ -4,6 +4,8 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Typography from '~/components/Typography';
 import colors from '~/theme/colors';
 import SearchFilter from '~/features/explore/components/SearchFilter';
+import {useNavigation} from '@react-navigation/native';
+import routes from '@explore/navigation/routes';
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: colors.gray300},
@@ -41,6 +43,8 @@ const styles = StyleSheet.create({
 });
 
 export default function ExploreScreen() {
+  const {navigate} = useNavigation();
+
   return (
     <>
       <StatusBar
@@ -70,7 +74,11 @@ export default function ExploreScreen() {
                 for you and the people you love.
               </Typography>
             </View>
-            <SearchFilter />
+            <SearchFilter
+              showPeriod
+              submitTitle="Show homes"
+              onSubmit={() => navigate(routes.homes)}
+            />
           </View>
         </SafeAreaView>
       </View>
