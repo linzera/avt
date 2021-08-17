@@ -13,7 +13,11 @@ const styles = StyleSheet.create({
 export default function LoadingView() {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color={colors.primary} />
+      <ActivityIndicator
+        accessibilityHint="Loading"
+        size="large"
+        color={colors.primary}
+      />
     </View>
   );
 }

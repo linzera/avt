@@ -2,7 +2,7 @@ import React from 'react';
 import {render, fireEvent} from '@testing-library/react-native';
 import ClearButton from '..';
 
-describe('<ClearButton />', () => {
+describe('<ClearFilterButton />', () => {
   it('should render as expected given default props', () => {
     const {queryByText} = render(<ClearButton onPress={() => undefined} />);
     expect(queryByText(/Clear all/)).not.toBeNull();

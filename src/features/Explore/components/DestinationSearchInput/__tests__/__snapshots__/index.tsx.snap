@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DestinationSearchInput /> should render as expected given default props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderBottomWidth": 1,
+        "borderColor": "#e0e0e0",
+        "flexDirection": "row",
+        "height": 50,
+        "marginBottom": 20,
+        "marginHorizontal": 20,
+        "marginTop": 8,
+        "paddingBottom": 4,
+      },
+      false,
+    ]
+  }
+  testID="SearchInputContainer"
+>
+  <SvgMock />
+  <TextInput
+    accessibilityHint="Search Destination Input"
+    allowFontScaling={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    placeholder="Search by destination name"
+    placeholderTextColor="#022B5440"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "color": "#505051",
+        "flex": 1,
+        "fontSize": 16,
+        "height": "100%",
+        "marginLeft": 8,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

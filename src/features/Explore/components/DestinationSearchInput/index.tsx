@@ -67,7 +67,9 @@ export default function DestinationSearchInput({
   }
 
   return (
-    <View style={[styles.container, isFocused && styles.focusedContainer]}>
+    <View
+      testID="SearchInputContainer"
+      style={[styles.container, isFocused && styles.focusedContainer]}>
       <SearchIcon />
       <TextInput
         style={styles.input}
@@ -76,10 +78,14 @@ export default function DestinationSearchInput({
         onBlur={onBlurText}
         placeholder="Search by destination name"
         placeholderTextColor="#022B5440"
+        accessibilityHint="Search Destination Input"
         {...rest}
       />
       <If condition={!!value}>
-        <Button onPress={onClear} variant="icon">
+        <Button
+          accessibilityHint="Clear Input"
+          onPress={onClear}
+          variant="icon">
           <ClearIcon />
         </Button>
       </If>

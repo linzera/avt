@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CHARACTERISTICS_MAPPING = {
+export const CHARACTERISTICS_MAPPING = {
   pool: {
     icon: <PoolIcon />,
     label: 'Pool',

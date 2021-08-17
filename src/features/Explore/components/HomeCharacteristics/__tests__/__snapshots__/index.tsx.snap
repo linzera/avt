@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeCharacteristics /> should render all characteristics properly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-evenly",
+      "marginBottom": 12,
+      "marginTop": 8,
+      "paddingBottom": 16,
+      "paddingHorizontal": 8,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <SvgMock />
+    <Text
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 0.80)",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 12,
+        }
+      }
+    >
+      1
+       
+      Pool
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <SvgMock />
+    <Text
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 0.80)",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 12,
+        }
+      }
+    >
+      1
+       
+      Bathrooms
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <SvgMock />
+    <Text
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 0.80)",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 12,
+        }
+      }
+    >
+      1
+       
+      
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <SvgMock />
+    <Text
+      style={
+        Object {
+          "color": "rgba(0, 0, 0, 0.80)",
+          "fontFamily": "SourceSansPro-Regular",
+          "fontSize": 12,
+        }
+      }
+    >
+      1
+       
+      Bedrooms
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<HomeCharacteristics /> should render properly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-evenly",
+      "marginBottom": 12,
+      "marginTop": 8,
+      "paddingBottom": 16,
+      "paddingHorizontal": 8,
+    }
+  }
+/>
+`;

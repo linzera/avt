@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmptyState /> should render properly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+      },
+      Object {
+        "height": 1120.56,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#022B54",
+        "fontFamily": "SourceSansPro-SemiBold",
+        "fontSize": 20,
+        "maxWidth": 240,
+        "textAlign": "center",
+      }
+    }
+  >
+    We couldn’t find any available homes...
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "#022B5450",
+        "fontFamily": "SourceSansPro-Regular",
+        "fontSize": 16,
+        "marginTop": 12,
+        "maxWidth": 278,
+        "textAlign": "center",
+      }
+    }
+  >
+    Please, try to select other dates to see available homes inside selected regions.
+  </Text>
+</View>
+`;
