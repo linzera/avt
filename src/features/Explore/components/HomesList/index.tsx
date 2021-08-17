@@ -3,7 +3,7 @@ import {FlatList, StyleSheet} from 'react-native';
 import {SearchHomes} from '~/graphql/generated/SearchHomes';
 import {useHomeItemHeight} from '@explore/hooks/use-home-item-height';
 import {useSearchFilter} from '@explore/context/filter/Provider';
-import LoadingView from '../LoadingView';
+import LoadingView from '@explore/components/LoadingView';
 import HomeItem from './HomeItem';
 import EmptyState from './EmptyState';
 

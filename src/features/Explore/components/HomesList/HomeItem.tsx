@@ -9,8 +9,8 @@ import colors from '~/theme/colors';
 import {Home_fragment} from '~/graphql/generated/Home_fragment';
 import Typography from '~/components/Typography';
 import {useNavigation} from '@react-navigation/native';
-import routes from '../../navigation/routes';
-import ImageWithPlaceholder from '../ImageWithPlaceholder';
+import routes from '@explore/navigation/routes';
+import ImageWithPlaceholder from '@explore/components/ImageWithPlaceholder';
 
 const styles = StyleSheet.create({
   container: {

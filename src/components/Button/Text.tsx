@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import Typography, {TypographyProps} from '../Typography';
+import Typography, {TypographyProps} from '~/components/Typography';
 import {useButtonContext} from './context';
 
 export default function Text(props: PropsWithChildren<TypographyProps>) {

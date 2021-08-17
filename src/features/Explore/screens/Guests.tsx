@@ -9,8 +9,11 @@ import CountInput from '@explore/components/CountInput';
 
 import Typography from '~/components/Typography';
 import Divider from '~/components/Divider';
-import {Guest, GuestVariant} from '../context/filter/types';
-import {initialGuestValues, useSearchFilter} from '../context/filter/Provider';
+import {Guest, GuestVariant} from '@explore/context/filter/types';
+import {
+  initialGuestValues,
+  useSearchFilter,
+} from '@explore/context/filter/Provider';
 
 const styles = StyleSheet.create({
   list: {

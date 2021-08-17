@@ -1,7 +1,7 @@
 import {useQuery} from '@apollo/client';
 import {useCallback, useRef, useState} from 'react';
 import {SearchHomes} from '~/graphql/generated/SearchHomes';
-import {useSearchFilter} from '../../context/filter/Provider';
+import {useSearchFilter} from '@explore/context/filter/Provider';
 import {GET_HOMES_QUERY} from './queries';
 
 const INITIAL_PAGE = 1;

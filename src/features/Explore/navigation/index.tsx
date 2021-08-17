@@ -19,7 +19,11 @@ export default function ExploreStack() {
         <Stack.Group>
           <Stack.Screen name={routes.explore} component={ExploreScreen} />
           <Stack.Screen name={routes.homes} component={HomesScreen} />
-          <Stack.Screen name={routes.homeDetail} component={HomeDetail} />
+          <Stack.Screen
+            name={routes.homeDetail}
+            component={HomeDetail}
+            options={{animation: 'slide_from_right'}}
+          />
         </Stack.Group>
         <Stack.Group
           screenOptions={{
