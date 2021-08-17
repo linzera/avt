@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Divider /> should render properly given default props 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#eeeeee",
+        "height": 2,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`<Divider /> should render properly given horizontal prop 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#eeeeee",
+        "width": 2,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
