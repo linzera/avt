@@ -55,7 +55,8 @@ export default function CountInput({value, onCountPress, maxCount}: Props) {
       <Pressable
         disabled={isDisabled}
         onPress={() => onCountPress(value - 1)}
-        style={[styles.actionContainer, styles.left]}>
+        style={[styles.actionContainer, styles.left]}
+        accessibilityHint="Decrement">
         <Choose>
           <When condition={isDisabled}>
             <MinusDisabledIcon />
@@ -76,7 +77,8 @@ export default function CountInput({value, onCountPress, maxCount}: Props) {
       <Pressable
         disabled={isIncrementDisabled}
         onPress={() => onCountPress(value + 1)}
-        style={[styles.actionContainer, styles.right]}>
+        style={[styles.actionContainer, styles.right]}
+        accessibilityHint="Increment">
         <Choose>
           <When condition={isIncrementDisabled}>
             <PlusDisabledIcon />

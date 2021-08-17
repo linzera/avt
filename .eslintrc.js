@@ -41,5 +41,5 @@ module.exports = {
       typescript: {},
     },
   },
-  ignorePatterns: ['metro.config.js'],
+  ignorePatterns: ['metro.config.js', 'jest-setup.js'],
 };

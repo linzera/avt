@@ -44,7 +44,7 @@
     "@types/react-native-snap-carousel": "^3.8.4",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/parser": "^4.29.1",
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^27.0.6",
     "babel-plugin-jsx-control-statements": "^4.1.0",
     "babel-plugin-root-import": "^6.6.0",
     "eslint": "^7.14.0",
@@ -75,6 +75,13 @@
     ],
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
-    ]
+    ],
+    "transformIgnorePatterns": [],
+    "setupFiles": [
+      "./jest-setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/__mocks__/svgMock.js"
+    }
   }
 }
