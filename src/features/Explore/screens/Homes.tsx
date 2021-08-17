@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: -1,
   },
 });
 
@@ -57,7 +58,9 @@ export default function Homes() {
           onDismiss={refetch}>
           <View style={styles.sheetContainer}>
             <View style={styles.sheetHeader}>
-              <Button variant="icon">
+              <Button
+                variant="icon"
+                onPress={() => filterSheetRef.current?.close()}>
                 <CloseIcon />
               </Button>
               <View style={styles.sheetTitle}>

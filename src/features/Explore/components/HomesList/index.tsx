@@ -39,6 +39,7 @@ export default function HomeList({isLoading, data, fetchMore}: Props) {
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={<EmptyState />}
           keyExtractor={item => item?.id}
+          maxToRenderPerBatch={4}
           getItemLayout={(_, index) => ({
             length: itemHeight,
             offset: itemHeight * index,

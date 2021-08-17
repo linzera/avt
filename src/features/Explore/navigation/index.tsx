@@ -6,6 +6,7 @@ import PeriodScreen from '@explore/screens/Period';
 import GuestsScreen from '@explore/screens/Guests';
 import DestinationScreen from '@explore/screens/Destination';
 import HomesScreen from '@explore/screens/Homes';
+import HomeDetail from '@explore/screens/HomeDetail';
 import SearchFilterProvider from '@explore/context/filter/Provider';
 import routes from './routes';
 
@@ -18,6 +19,7 @@ export default function ExploreStack() {
         <Stack.Group>
           <Stack.Screen name={routes.explore} component={ExploreScreen} />
           <Stack.Screen name={routes.homes} component={HomesScreen} />
+          <Stack.Screen name={routes.homeDetail} component={HomeDetail} />
         </Stack.Group>
         <Stack.Group
           screenOptions={{

@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
-import {Image, View, StyleSheet, Pressable} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Pressable} from 'react-native';
 import {gql} from '@apollo/client';
 import {useHomeItemHeight} from '@explore/hooks/use-home-item-height';
 import HomeInfo from '@explore/components/HomeInfo';
 import HomeCharacteristics from '@explore/components/HomeCharacteristics';
-import ImagePlaceholder from '@explore/assets/svg/img_placeholder.svg';
+
 import colors from '~/theme/colors';
 import {Home_fragment} from '~/graphql/generated/Home_fragment';
 import Typography from '~/components/Typography';
+import {useNavigation} from '@react-navigation/native';
+import routes from '../../navigation/routes';
+import ImageWithPlaceholder from '../ImageWithPlaceholder';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,16 +19,6 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     flex: 1,
-  },
-  img: {
-    flex: 1,
-    backgroundColor: `${colors.primary}20`,
-    borderRadius: 8,
-  },
-  imgPlaceholder: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   imgHeader: {...StyleSheet.absoluteFillObject, alignItems: 'center'},
   imgHeaderContainer: {
@@ -47,47 +40,36 @@ interface Props extends Home_fragment {
   isAnyDestination: boolean;
 }
 
-function HomeItem({
-  photos,
-  index,
-  total,
-  regionName,
-  stateCode,
-  title,
-  cityName,
-  isAnyDestination,
-  bathroomsCount,
-  hasPool,
-  maxOccupancy,
-  roomsCount,
-}: Props) {
-  const [isImagePlaceholderVisible, setImagePlaceholderVisibility] =
-    useState(true);
+function HomeItem({total, index, isAnyDestination, ...rest}: Props) {
   const itemHeight = useHomeItemHeight();
+  const navigation = useNavigation();
+
+  const {
+    photos,
+    regionName,
+    stateCode,
+    title,
+    cityName,
+    bathroomsCount,
+    hasPool,
+    maxOccupancy,
+    roomsCount,
+  } = rest;
 
   const coverImgUri = photos[0]?.url ?? '';
 
+  function onPress() {
+    navigation.navigate(routes.homeDetail, {
+      ...rest,
+    });
+  }
+
   return (
     <Pressable
-      onPress={() => {
-        console.log('test');
-      }}
+      onPress={onPress}
       style={[styles.container, {height: itemHeight}]}>
       <View style={styles.imgContainer}>
-        <Image
-          style={styles.img}
-          resizeMode="cover"
-          source={{
-            uri: coverImgUri,
-          }}
-          accessibilityIgnoresInvertColors
-          onLoadEnd={() => setImagePlaceholderVisibility(false)}
-        />
-        <If condition={isImagePlaceholderVisible}>
-          <View style={styles.imgPlaceholder}>
-            <ImagePlaceholder />
-          </View>
-        </If>
+        <ImageWithPlaceholder uri={coverImgUri} />
         <View style={styles.imgHeader}>
           <View style={styles.imgHeaderContainer}>
             <Typography>
@@ -112,7 +94,9 @@ function HomeItem({
       </View>
       <HomeInfo
         name={title}
-        location={`${regionName} • ${cityName}, ${stateCode}`}
+        regionName={regionName}
+        stateCode={stateCode}
+        cityName={cityName}
       />
       <HomeCharacteristics>
         <HomeCharacteristics.Item item="rooms" count={roomsCount} showLabel />
@@ -136,7 +120,6 @@ HomeItem.fragments = {
       id
       title
       photos {
-        listOrder
         url
       }
       roomsCount

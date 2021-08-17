@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Typography from '~/components/Typography';
+import {SearchHomes_homes_results} from '~/graphql/generated/SearchHomes';
 
 const styles = StyleSheet.create({
   textContainer: {
@@ -11,23 +12,31 @@ const styles = StyleSheet.create({
   name: {marginTop: 4},
 });
 
-interface Props {
+interface Props
+  extends Pick<
+    SearchHomes_homes_results,
+    'regionName' | 'cityName' | 'stateCode'
+  > {
   name: string;
-  location: string;
 }
 
-export default function HomeInfo(props: Props) {
+export default function HomeInfo({
+  regionName,
+  cityName,
+  stateCode,
+  name,
+}: Props) {
   return (
     <View style={styles.textContainer}>
       <Typography color="accent" component="text14" style={styles.location}>
-        {props.location}
+        {regionName} • {cityName}, {stateCode}
       </Typography>
       <Typography
         color="primary"
         component="text20"
         fontType="bold"
         style={styles.name}>
-        {props.name}
+        {name}
       </Typography>
     </View>
   );
