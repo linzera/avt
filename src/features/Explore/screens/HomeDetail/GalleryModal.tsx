@@ -59,6 +59,7 @@ export default function GalleryModal({
       <ImageWithPlaceholder
         style={[styles.rowImage, isSelected && styles.selected]}
         uri={uri}
+        showLogo={false}
       />
     );
   }

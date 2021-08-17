@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1F3A04287A5D46ADBF1C474D /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9D8962FE26CB918E001B2207 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8962FD26CB918E001B2207 /* BootSplash.storyboard */; };
 		ADF303D87323D38DE7DF7FAE /* libPods-AvantStayChallenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66AC9E431BB0DAB6912B3A /* libPods-AvantStayChallenge.a */; };
 		D45430BCC5551E4A5DFE6B63 /* libPods-AvantStayChallenge-AvantStayChallengeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A01E9EACE5CC56424F6053B /* libPods-AvantStayChallenge-AvantStayChallengeTests.a */; };
 		EAEE6A665A264FE38D93192D /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89BF640E237C4B3492DF980D /* SourceSansPro-Regular.ttf */; };
@@ -41,13 +42,14 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AvantStayChallenge/main.m; sourceTree = "<group>"; };
 		29C3BAD71F9E9F78C6694DA4 /* Pods-AvantStayChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AvantStayChallenge.debug.xcconfig"; path = "Target Support Files/Pods-AvantStayChallenge/Pods-AvantStayChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		3A66AC9E431BB0DAB6912B3A /* libPods-AvantStayChallenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AvantStayChallenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4426AFEC4F7B4995A59721E8 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Bold.ttf"; path = "../src/assets/fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
+		4426AFEC4F7B4995A59721E8 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Bold.ttf"; path = "../src/assets/fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
 		775E235800E94A72FF186B86 /* Pods-AvantStayChallenge-AvantStayChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AvantStayChallenge-AvantStayChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-AvantStayChallenge-AvantStayChallengeTests/Pods-AvantStayChallenge-AvantStayChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A01E9EACE5CC56424F6053B /* libPods-AvantStayChallenge-AvantStayChallengeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AvantStayChallenge-AvantStayChallengeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AvantStayChallenge/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89BF640E237C4B3492DF980D /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Regular.ttf"; path = "../src/assets/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		89BF640E237C4B3492DF980D /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Regular.ttf"; path = "../src/assets/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		9D8962FD26CB918E001B2207 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = AvantStayChallenge/BootSplash.storyboard; sourceTree = "<group>"; };
 		B675665486B117CB1B892E4F /* Pods-AvantStayChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AvantStayChallenge.release.xcconfig"; path = "Target Support Files/Pods-AvantStayChallenge/Pods-AvantStayChallenge.release.xcconfig"; sourceTree = "<group>"; };
-		BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-SemiBold.ttf"; path = "../src/assets/fonts/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-SemiBold.ttf"; path = "../src/assets/fonts/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		BF461EB575147525303571A7 /* Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-AvantStayChallenge-AvantStayChallengeTests/Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 		13B07FAE1A68108700A75B9A /* AvantStayChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				9D8962FD26CB918E001B2207 /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -120,7 +123,6 @@
 				775E235800E94A72FF186B86 /* Pods-AvantStayChallenge-AvantStayChallengeTests.debug.xcconfig */,
 				BF461EB575147525303571A7 /* Pods-AvantStayChallenge-AvantStayChallengeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -164,7 +166,6 @@
 				BD42C0CB3B404E599E3A15A6 /* SourceSansPro-SemiBold.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +265,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F4CA8DFC67984C32B2B15D95 /* SourceSansPro-Bold.ttf in Resources */,
+				9D8962FE26CB918E001B2207 /* BootSplash.storyboard in Resources */,
 				EAEE6A665A264FE38D93192D /* SourceSansPro-Regular.ttf in Resources */,
 				1F3A04287A5D46ADBF1C474D /* SourceSansPro-SemiBold.ttf in Resources */,
 			);

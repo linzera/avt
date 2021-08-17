@@ -20,25 +20,32 @@ const styles = StyleSheet.create({
 interface Props {
   uri: string;
   style?: any;
+  showLogo?: boolean;
 }
 
-export default function ImageWithPlaceholder(props: Props) {
+export default function ImageWithPlaceholder({
+  style,
+  uri,
+  showLogo = true,
+}: Props) {
   const [isImagePlaceholderVisible, setImagePlaceholderVisibility] =
     useState(true);
   return (
     <>
       <FastImage
         accessibilityIgnoresInvertColors
-        style={props.style || styles.img}
+        style={style || styles.img}
         resizeMode="cover"
         source={{
-          uri: props.uri,
+          uri: uri,
         }}
         onLoadEnd={() => setImagePlaceholderVisibility(false)}
       />
       <If condition={isImagePlaceholderVisible}>
         <View style={styles.imgPlaceholder}>
-          <ImagePlaceholder />
+          <If condition={showLogo}>
+            <ImagePlaceholder />
+          </If>
         </View>
       </If>
     </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {hide} from 'react-native-bootsplash';
 import Typography from '~/components/Typography';
 import colors from '~/theme/colors';
 import SearchFilter from '~/features/explore/components/SearchFilter';
@@ -58,6 +59,7 @@ export default function ExploreScreen() {
           resizeMode="stretch"
           source={require('../assets/img/bg.png')}
           style={styles.img}
+          onLoadEnd={() => hide({fade: true})}
         />
         <SafeAreaView edges={['bottom']} style={styles.safeArea}>
           <View style={styles.formWrapper}>
