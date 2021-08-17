@@ -1,4 +1,5 @@
 import {ApolloClient, InMemoryCache} from '@apollo/client';
+import {concatPagination} from '@apollo/client/utilities';
 
 const client = new ApolloClient({
   uri: 'https://fake-api.avantstay.dev/graphql',
@@ -17,6 +18,7 @@ const client = new ApolloClient({
               };
             },
           },
+          homesPricing: concatPagination(['ids', 'period']),
         },
       },
     },
