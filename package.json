@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "pod-install": "pod install --project-directory=ios",
     "postinstall": "npx patch-package",
+    "apollo:schema": "apollo client:download-schema --endpoint=https://fake-api.avantstay.dev/graphql src/graphql/schema.json",
     "apollo:codegen": "apollo client:codegen --target=typescript --localSchemaFile=src/graphql/schema.json --tagName=gql --outputFlat src/graphql/generated"
   },
   "dependencies": {

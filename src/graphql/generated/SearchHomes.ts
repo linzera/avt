@@ -11,7 +11,6 @@ import { BookingPeriod } from "./globalTypes";
 
 export interface SearchHomes_homes_results_photos {
   __typename: "HomePhoto";
-  listOrder: number;
   url: string;
 }
 

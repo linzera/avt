@@ -25,3 +25,12 @@ export const GET_HOMES_QUERY = gql`
     }
   }
 `;
+
+export const GET_HOMES_PRICING_QUERY = gql`
+  query GetHomesPricing($period: BookingPeriod!, $ids: [UUID]!) {
+    homesPricing(ids: $ids, period: $period) {
+      homeId
+      total
+    }
+  }
+`;

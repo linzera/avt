@@ -10,7 +10,9 @@ import {Home_fragment} from '~/graphql/generated/Home_fragment';
 import Typography from '~/components/Typography';
 import {useNavigation} from '@react-navigation/native';
 import routes from '@explore/navigation/routes';
+import {useSearchFilter} from '@explore/context/filter/Provider';
 import ImageWithPlaceholder from '@explore/components/ImageWithPlaceholder';
+import {GetHomesPricing_homesPricing} from '~/graphql/generated/GetHomesPricing';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,8 +25,6 @@ const styles = StyleSheet.create({
   imgHeader: {...StyleSheet.absoluteFillObject, alignItems: 'center'},
   imgHeaderContainer: {
     backgroundColor: colors.white100,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
     borderBottomLeftRadius: 4,
     borderBottomEndRadius: 4,
     shadowColor: colors.black100,
@@ -32,16 +32,44 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
+  spacing: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    justifyContent: 'center',
+  },
+  pricing: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,
+    backgroundColor: colors.primary,
+    paddingHorizontal: 12,
+    borderBottomLeftRadius: 4,
+    borderBottomEndRadius: 4,
+    shadowColor: colors.black100,
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    justifyContent: 'space-between',
+  },
+  nights: {marginRight: 8},
 });
 
 interface Props extends Home_fragment {
   total: number;
   index: number;
   isAnyDestination: boolean;
+  pricingData?: GetHomesPricing_homesPricing | null;
 }
 
-function HomeItem({total, index, isAnyDestination, ...rest}: Props) {
+function HomeItem({
+  total,
+  index,
+  isAnyDestination,
+  pricingData,
+  ...rest
+}: Props) {
   const itemHeight = useHomeItemHeight();
+  const {nightsCount} = useSearchFilter();
   const navigation = useNavigation();
 
   const {
@@ -72,23 +100,36 @@ function HomeItem({total, index, isAnyDestination, ...rest}: Props) {
         <ImageWithPlaceholder uri={coverImgUri} />
         <View style={styles.imgHeader}>
           <View style={styles.imgHeaderContainer}>
-            <Typography>
-              <Typography color="primary" fontType="bold">
-                {index}
-              </Typography>{' '}
-              of{' '}
-              <Typography color="primary" fontType="bold">
-                {total}
-              </Typography>{' '}
-              homes{' '}
-              <Typography color="primary" fontType="bold">
-                in{' '}
-                <Choose>
-                  <When condition={isAnyDestination}>any destination</When>
-                  <Otherwise>{regionName}</Otherwise>
-                </Choose>
+            <View style={styles.spacing}>
+              <Typography>
+                <Typography color="primary" fontType="bold">
+                  {index}
+                </Typography>{' '}
+                of{' '}
+                <Typography color="primary" fontType="bold">
+                  {total}
+                </Typography>{' '}
+                homes{' '}
+                <Typography color="primary" fontType="bold">
+                  in{' '}
+                  <Choose>
+                    <When condition={isAnyDestination}>any destination</When>
+                    <Otherwise>{regionName}</Otherwise>
+                  </Choose>
+                </Typography>
               </Typography>
-            </Typography>
+            </View>
+            <If
+              condition={!!nightsCount && !!pricingData && !!pricingData.total}>
+              <View style={styles.pricing}>
+                <Typography style={styles.nights} color="white70">
+                  Total • {nightsCount} nights
+                </Typography>
+                <Typography fontType="medium" color="white100">
+                  ${pricingData?.total}
+                </Typography>
+              </View>
+            </If>
           </View>
         </View>
       </View>

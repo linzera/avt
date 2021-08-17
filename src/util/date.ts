@@ -66,9 +66,13 @@ export const formattedDate = () => {
   )}-${normalizeDateNumber(now.getDate())}`;
 };
 
+export function getNightsCount(start: string, end: string) {
+  const dayDiffCount = getDayDiffCount(start, end);
+  return dayDiffCount + 1;
+}
+
 export function formatPeriodLabel({checkIn, checkOut}: Period) {
-  const dayDiffCount = getDayDiffCount(checkIn, checkOut);
-  const nightsCount = dayDiffCount + 1;
+  const nightsCount = getNightsCount(checkIn, checkOut);
 
   const startDate = new Date(checkIn);
   startDate.setDate(startDate.getDate() + 1);

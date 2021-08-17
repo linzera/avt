@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Homes() {
-  const {data, loading, refetch, loadMore} = useSearchHomesPaginationQuery();
+  const {data, loading, refetch, loadMore, pricingData} =
+    useSearchHomesPaginationQuery();
   const {filtersAppliedCount, clearFilters} = useSearchFilter();
   const filterSheetRef = useRef<BottomSheetModal>(null);
 
@@ -46,7 +47,12 @@ export default function Homes() {
     <BottomSheetModalProvider>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar animated barStyle="dark-content" />
-        <HomeList data={data} isLoading={loading} fetchMore={loadMore} />
+        <HomeList
+          pricingData={pricingData}
+          data={data}
+          isLoading={loading}
+          fetchMore={loadMore}
+        />
         <FooterFilter
           refetch={refetch}
           onFilterPress={() => filterSheetRef.current?.present()}

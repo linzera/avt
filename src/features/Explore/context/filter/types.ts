@@ -40,6 +40,7 @@ export interface FilterState {
   isRegionsReady: boolean;
   isAnyDestination: boolean;
   guestsCount: number;
+  nightsCount: number;
   filtersAppliedCount: number;
   clearFilters: () => void;
   setRegions: (regions: RegionState[]) => void;

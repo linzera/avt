@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import {useQuery} from '@apollo/client';
-import {formatPeriodLabel} from '~/util/date';
+import {formatPeriodLabel, getNightsCount} from '~/util/date';
 import {
   FilterState,
   GuestCountState,
@@ -34,6 +34,7 @@ const initialValues = {
   isRegionsReady: false,
   guestsCount: 0,
   filtersAppliedCount: 0,
+  nightsCount: 0,
   isAnyDestination: true,
   setPeriod: () => undefined,
   setRegions: () => undefined,
@@ -61,6 +62,11 @@ export default function SearchFilterProvider(props: {
       .map(guest => guest.count)
       .reduce((result, cur) => result + cur, 0);
   }, [guests]);
+
+  const nightsCount = useMemo(
+    () => getNightsCount(period.checkIn, period.checkOut),
+    [period],
+  );
 
   const filtersAppliedCount = useMemo(() => {
     let counter = 0;
@@ -113,6 +119,7 @@ export default function SearchFilterProvider(props: {
         formattedPeriod,
         guestsCount,
         filtersAppliedCount,
+        nightsCount,
         clearFilters,
         setRegions,
         setPeriod,

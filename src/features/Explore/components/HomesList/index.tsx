@@ -4,6 +4,7 @@ import {SearchHomes} from '~/graphql/generated/SearchHomes';
 import {useHomeItemHeight} from '@explore/hooks/use-home-item-height';
 import {useSearchFilter} from '@explore/context/filter/Provider';
 import LoadingView from '@explore/components/LoadingView';
+import {GetHomesPricing} from '~/graphql/generated/GetHomesPricing';
 import HomeItem from './HomeItem';
 import EmptyState from './EmptyState';
 
@@ -17,9 +18,15 @@ interface Props {
   data?: SearchHomes;
   fetchMore: () => void;
   isLoading: boolean;
+  pricingData?: GetHomesPricing;
 }
 
-export default function HomeList({isLoading, data, fetchMore}: Props) {
+export default function HomeList({
+  isLoading,
+  data,
+  fetchMore,
+  pricingData,
+}: Props) {
   const {isAnyDestination} = useSearchFilter();
   const itemHeight = useHomeItemHeight();
 
@@ -48,6 +55,9 @@ export default function HomeList({isLoading, data, fetchMore}: Props) {
           renderItem={({item, index}) =>
             item && (
               <HomeItem
+                pricingData={pricingData?.homesPricing.find(
+                  priceData => priceData?.homeId === item.id,
+                )}
                 isAnyDestination={isAnyDestination}
                 index={index + 1}
                 total={data?.homes.count ?? 0}

@@ -9,7 +9,6 @@
 
 export interface Home_fragment_photos {
   __typename: "HomePhoto";
-  listOrder: number;
   url: string;
 }
 
